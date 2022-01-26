@@ -1,0 +1,16 @@
+@mixin firstMixin ($pseudo:false ,$Y,$X) {
+    padding-top:($Y/$X *100% ) ;
+    width: 100%;
+   
+}
+
+
+
+.one-elment {
+@include firstMixin(true,100,500 );
+
+background-color: palevioletred;
+}
+
+
+

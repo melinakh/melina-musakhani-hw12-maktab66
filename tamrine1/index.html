@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col-25">
+            <label class="label" for="fname">First Name</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="text"
+              id="fname"
+              class="input"
+              name="firstname"
+              placeholder="Your name.."
+            />
+          </div>
+        </div>
+        <label id="name-err"></label>
+        <div class="row">
+          <div class="col-25">
+            <label class="label" for="lname">Last Name</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="text"
+              id="lname"
+              name="lastname"
+              class="input"
+              placeholder="Your last name.."
+            />
+          </div>
+        </div>
+        <label id="last-name-err"></label>
+        <div class="row">
+          <div class="col-25">
+            <label class="label" for="country">Country</label>
+          </div>
+          <div class="col-75">
+            <select id="country" name="country">
+              <option value="australia">Australia</option>
+              <option value="canada">Canada</option>
+              <option value="usa">USA</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="subject">Subject</label>
+          </div>
+          <div class="col-75">
+            <textarea
+              class="textarea"
+              id="subject"
+              name="subject"
+              placeholder="Write something.."
+              style="height: 200px"
+            ></textarea>
+          </div>
+        </div>
+        <button type="submit" class="button" onclick="check(event)">
+          sumbit
+        </button>
+        <h2 id="h2" style="display: none">
+          your information was successfully registered!
+        </h2>
+      </form>
+    </div>
+    <script>
+      function check(event) {
+        event.preventDefault();
+        const input = document.getElementById("fname");
+        const secondInput = document.getElementById("lname");
+        const valueOfInput = document.getElementById("fname").value;
+        const valueOfSecondInput = document.getElementById("lname").value;
+        const err = document.getElementById("name-err");
+        const secondErr = document.getElementById("last-name-err");
+        const h2 = document.getElementById("h2");
+        err.innerText = null;
+        secondErr.innerText = null;
+        if (valueOfInput.length < 3) {
+          err.innerText = "please enter your name";
+          err.style.color = "red";
+          input.style.borderColor = "red";
+        }
+        if (valueOfSecondInput.length < 3) {
+          secondErr.innerText = "please enter your last name";
+          secondErr.style.color = "red";
+          secondInput.style.borderColor = "red";
+        } else if (valueOfInput.length > 3 && valueOfSecondInput.length > 3) {
+          h2.style.display = "flex";
+          setTimeout(() => {
+            location.reload(true);
+          }, 8000);
+        }
+      }
+    </script>
+  </body>
+</html>
